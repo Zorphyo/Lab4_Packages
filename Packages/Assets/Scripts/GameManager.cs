@@ -12,9 +12,12 @@ public class GameManager : MonoBehaviour
 
     public int meteorCount = 0;
 
+    AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         Instantiate(playerPrefab, transform.position, Quaternion.identity);
         InvokeRepeating("SpawnMeteor", 1f, 2f);
     }
@@ -24,6 +27,7 @@ public class GameManager : MonoBehaviour
     {
         if (gameOver)
         {
+            audioSource.Stop();
             CancelInvoke();
         }
 

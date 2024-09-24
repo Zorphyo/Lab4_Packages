@@ -6,10 +6,14 @@ public class BigMeteor : MonoBehaviour
 {
     private int hitCount = 0;
 
+    AudioSource audioSource;
+    public ObjectDestroyed objectDestroyed;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
+        objectDestroyed = FindObjectOfType<ObjectDestroyed>();
     }
 
     // Update is called once per frame
@@ -25,6 +29,7 @@ public class BigMeteor : MonoBehaviour
         if (hitCount >= 5)
         {
             Destroy(this.gameObject);
+            objectDestroyed.PlayExplosion();
         }
     }
 
@@ -34,6 +39,7 @@ public class BigMeteor : MonoBehaviour
         {
             GameObject.Find("GameManager").GetComponent<GameManager>().gameOver = true;
             Destroy(whatIHit.gameObject);
+            objectDestroyed.PlayExplosion();
         }
         else if (whatIHit.tag == "Laser")
         {

@@ -381,6 +381,7 @@
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/Laser.cs"
 "Assets/Scripts/Meteor.cs"
+"Assets/Scripts/ObjectDestroyed.cs"
 "Assets/Scripts/Player.cs"
 -langversion:9.0
 /deterministic
