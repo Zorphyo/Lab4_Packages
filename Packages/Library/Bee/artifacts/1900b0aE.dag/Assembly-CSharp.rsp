@@ -389,6 +389,7 @@
 "Assets/Scripts/Laser.cs"
 "Assets/Scripts/Meteor.cs"
 "Assets/Scripts/ObjectDestroyed.cs"
+"Assets/Scripts/PlayerActionInputs.cs"
 "Assets/Scripts/PlayerControls.cs"
 "Assets/Scripts/SpawnMeteor.cs"
 -langversion:9.0
