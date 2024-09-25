@@ -8,12 +8,16 @@ public class BigMeteor : MonoBehaviour
 
     AudioSource audioSource;
     public ObjectDestroyed objectDestroyed;
+    CameraZoom cameraZoom;
+    CameraShake cameraShake;
 
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         objectDestroyed = FindObjectOfType<ObjectDestroyed>();
+        cameraZoom = FindObjectOfType<CameraZoom>();
+        cameraShake = FindObjectOfType<CameraShake>();
     }
 
     // Update is called once per frame
@@ -28,6 +32,8 @@ public class BigMeteor : MonoBehaviour
 
         if (hitCount >= 5)
         {
+            cameraZoom.AdjustZoom(cameraZoom.virtualCamera.m_Lens.FieldOfView - 20.0f);
+            cameraShake.ShakeCamera();
             Destroy(this.gameObject);
             objectDestroyed.PlayExplosion();
         }
@@ -39,6 +45,7 @@ public class BigMeteor : MonoBehaviour
         {
             GameObject.Find("GameManager").GetComponent<GameManager>().gameOver = true;
             Destroy(whatIHit.gameObject);
+            cameraShake.ShakeCamera();
             objectDestroyed.PlayExplosion();
         }
         else if (whatIHit.tag == "Laser")

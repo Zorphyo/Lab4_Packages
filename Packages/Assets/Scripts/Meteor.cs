@@ -6,12 +6,14 @@ public class Meteor : MonoBehaviour
 {
     AudioSource audioSource;
     ObjectDestroyed objectDestroyed;
+    CameraShake cameraShake;
 
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         objectDestroyed = FindObjectOfType<ObjectDestroyed>();
+        cameraShake = FindObjectOfType<CameraShake>();
     }
 
     // Update is called once per frame
@@ -32,12 +34,14 @@ public class Meteor : MonoBehaviour
             GameObject.Find("GameManager").GetComponent<GameManager>().gameOver = true;
             Destroy(whatIHit.gameObject);
             Destroy(this.gameObject);
+            cameraShake.ShakeCamera();
             objectDestroyed.PlayExplosion();
         } else if (whatIHit.tag == "Laser")
         {
             GameObject.Find("MeteorSpawner").GetComponent<SpawnMeteor>().meteorCount++;
             Destroy(whatIHit.gameObject);
             Destroy(this.gameObject);
+            cameraShake.ShakeCamera();
             objectDestroyed.PlayExplosion();
         }
     }

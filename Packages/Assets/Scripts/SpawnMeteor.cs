@@ -6,12 +6,14 @@ public class SpawnMeteor : MonoBehaviour
 {
     public GameObject meteorPrefab;
     public GameObject bigMeteorPrefab;
+    CameraZoom virtualCamera;
 
     [HideInInspector] public int meteorCount = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        virtualCamera = FindObjectOfType<CameraZoom>();
         InvokeRepeating("SpawnLittleMeteor", 1f, 2f);
     }
 
@@ -38,5 +40,6 @@ public class SpawnMeteor : MonoBehaviour
     {
         meteorCount = 0;
         Instantiate(bigMeteorPrefab, new Vector3(Random.Range(-8, 8), 7.5f, 0), Quaternion.identity);
+        virtualCamera.AdjustZoom(virtualCamera.virtualCamera.m_Lens.FieldOfView + 20.0f);
     }
 }
