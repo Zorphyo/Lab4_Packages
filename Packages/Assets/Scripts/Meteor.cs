@@ -5,7 +5,7 @@ using UnityEngine;
 public class Meteor : MonoBehaviour
 {
     AudioSource audioSource;
-    public ObjectDestroyed objectDestroyed;
+    ObjectDestroyed objectDestroyed;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +35,7 @@ public class Meteor : MonoBehaviour
             objectDestroyed.PlayExplosion();
         } else if (whatIHit.tag == "Laser")
         {
-            GameObject.Find("GameManager").GetComponent<GameManager>().meteorCount++;
+            GameObject.Find("MeteorSpawner").GetComponent<SpawnMeteor>().meteorCount++;
             Destroy(whatIHit.gameObject);
             Destroy(this.gameObject);
             objectDestroyed.PlayExplosion();

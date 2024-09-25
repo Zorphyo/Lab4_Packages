@@ -382,7 +382,9 @@
 "Assets/Scripts/Laser.cs"
 "Assets/Scripts/Meteor.cs"
 "Assets/Scripts/ObjectDestroyed.cs"
-"Assets/Scripts/Player.cs"
+"Assets/Scripts/PlayerControls.cs"
+"Assets/Scripts/SpawnMeteor.cs"
+"Assets/Scripts/SpawnPlayer.cs"
 -langversion:9.0
 /deterministic
 /optimize+
