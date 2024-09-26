@@ -40,6 +40,10 @@ public class SpawnMeteor : MonoBehaviour
     {
         meteorCount = 0;
         Instantiate(bigMeteorPrefab, new Vector3(Random.Range(-8, 8), 7.5f, 0), Quaternion.identity);
-        virtualCamera.AdjustZoom(virtualCamera.virtualCamera.m_Lens.FieldOfView + 20.0f);
+
+        if (virtualCamera.virtualCamera.m_Lens.FieldOfView != 80f)
+        {
+            virtualCamera.AdjustZoom(virtualCamera.virtualCamera.m_Lens.FieldOfView + 20.0f);
+        }
     }
 }
